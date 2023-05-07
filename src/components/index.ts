@@ -1,4 +1,5 @@
 import App from "./App";
 import AppWrapper from "./AppWrapper";
+import Navbar from "./Navbar";
 
-export { App, AppWrapper };
+export { App, AppWrapper, Navbar };
