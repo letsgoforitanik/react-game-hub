@@ -2,20 +2,10 @@ import { useState, useEffect } from "react";
 import { AxiosError } from "axios";
 import apiClient from "../services/api-client";
 
-interface Game {
+export interface Game {
     id: number;
-    slug: string;
     name: string;
-    tba: boolean;
-    rating: number;
     background_image: string;
-    rating_top: number;
-    playtime: number;
-    added: number;
-    metacritic: number;
-    suggestions_count: number;
-    reviews_text_count: string;
-    ratings_count: string;
 }
 
 interface FetchGameResponse {
