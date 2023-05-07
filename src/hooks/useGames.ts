@@ -32,7 +32,7 @@ export default function useGames() {
     function fetchGames() {
         const controller = new AbortController();
         const signal = controller.signal;
-        const promise = apiClient.get<FetchGameResponse>("/gamess", { signal });
+        const promise = apiClient.get<FetchGameResponse>("/games", { signal });
         promise.then((response) => setGames(response.data.results));
         promise.catch((error) => error instanceof AxiosError && setError(error.message));
         return () => controller.abort();
