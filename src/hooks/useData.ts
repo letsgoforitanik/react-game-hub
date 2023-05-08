@@ -9,24 +9,26 @@ interface FetchResponse<T> {
     results: T[];
 }
 
-export default function useData<T>(endpoint: string) {
+export default function useData<T>(endpoint: string, params: object = {}, deps: any[] = []) {
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
     function fetchData() {
+        setLoading(true);
+
         const controller = new AbortController();
         const signal = controller.signal;
-        const promise = apiClient.get<FetchResponse<T>>(endpoint, { signal });
+        const promise = apiClient.get<FetchResponse<T>>(endpoint, { signal, params });
 
         promise.then((response) => setData(response.data.results));
-        promise.then((error) => error instanceof AxiosError && setError(error.message));
+        promise.catch((error) => error instanceof AxiosError && setError(error.message));
         promise.finally(() => setLoading(false));
 
         return () => controller.abort();
     }
 
-    useEffect(fetchData, []);
+    useEffect(fetchData, deps);
 
     return { data, error, loading };
 }
