@@ -7,6 +7,7 @@ import GameCard from "./GameCard";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import GameCardSkeleton from "./GameCardSkeleton";
+import GenreList from "./GenreList";
 
 export {
     App,
@@ -18,4 +19,5 @@ export {
     PlatformIconList,
     CriticScore,
     GameCardSkeleton,
+    GenreList,
 };
