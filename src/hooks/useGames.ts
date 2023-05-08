@@ -9,15 +9,15 @@ export interface Platform {
 export interface Game {
     id: number;
     name: string;
-    background_image: string;
+    background_image: string | null;
     parent_platforms: { platform: Platform }[];
     metacritic: number;
 }
 
 export default function useGames(gameQuery: GameQuery) {
-    const { genre, platform } = gameQuery;
-    const params = { genres: genre?.id, platforms: platform?.id };
-    const dependencies = [genre?.id, platform?.id];
+    const { genre, platform, sortField } = gameQuery;
+    const params = { genres: genre?.id, platforms: platform?.id, ordering: sortField };
+    const dependencies = [genre?.id, platform?.id, sortField];
     const { data: games, error, loading } = useData<Game>("/games", params, dependencies);
     return { games, error, loading };
 }
