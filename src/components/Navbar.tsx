@@ -3,7 +3,7 @@ import { ColorModeSwitch, SearchInput } from ".";
 import logo from "../assets/logo.webp";
 
 interface Props {
-    onSearch: (searchText: string) => void;
+    onSearch: (searchText: string | null) => void;
 }
 
 export default function Navbar({ onSearch }: Props) {

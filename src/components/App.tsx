@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Flex, Grid, GridItem, Show } from "@chakra-ui/react";
-import { GameGrid, GenreList, Navbar, PlatformSelector, SortSelector } from ".";
+import { GameGrid, GameHeading, GenreList, Navbar, PlatformSelector, SortSelector } from ".";
 import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/useGames";
 
@@ -39,6 +39,7 @@ export default function App() {
                 </GridItem>
             </Show>
             <GridItem area="main">
+                <GameHeading gameQuery={gameQuery} />
                 <Flex paddingLeft={7} gap={5}>
                     <PlatformSelector
                         onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
