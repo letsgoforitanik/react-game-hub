@@ -6,6 +6,7 @@ import GameGrid from "./GameGrid";
 import GameCard from "./GameCard";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 export {
     App,
@@ -16,4 +17,5 @@ export {
     GameCard,
     PlatformIconList,
     CriticScore,
+    GameCardSkeleton,
 };
