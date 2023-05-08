@@ -17,11 +17,11 @@ export default function GameCard({ game }: Props) {
         <Card borderRadius={10} overflow={"hidden"}>
             <Image src={imageSrc} alt="game-icon" />
             <CardBody>
-                <Heading fontSize="2xl">{name}</Heading>
-                <HStack justifyContent="space-between">
+                <HStack justifyContent="space-between" marginBottom={3}>
                     <PlatformIconList platforms={platforms} />
                     <CriticScore score={metacritic} />
                 </HStack>
+                <Heading fontSize="2xl">{name}</Heading>
             </CardBody>
         </Card>
     );
