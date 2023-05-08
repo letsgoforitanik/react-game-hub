@@ -15,9 +15,9 @@ export interface Game {
     metacritic: number;
 }
 
-export default function useGames(selectedGenre: Genre | null) {
-    const params = { genres: selectedGenre?.id };
-    const dependencies = [selectedGenre];
+export default function useGames(selectedGenre: Genre | null, selectedPlatform: Platform | null) {
+    const params = { genres: selectedGenre?.id, platforms: selectedPlatform?.id };
+    const dependencies = [selectedGenre, selectedPlatform];
     const { data: games, error, loading } = useData<Game>("/games", params, dependencies);
     return { games, error, loading };
 }
