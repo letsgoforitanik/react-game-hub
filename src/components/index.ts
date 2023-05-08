@@ -9,6 +9,7 @@ import CriticScore from "./CriticScore";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GenreList from "./GenreList";
 import PlatformSelector from "./PlatformSelector";
+import SortSelector from "./SortSelector";
 
 export {
     App,
@@ -22,4 +23,5 @@ export {
     GameCardSkeleton,
     GenreList,
     PlatformSelector,
+    SortSelector,
 };
