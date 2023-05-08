@@ -8,7 +8,7 @@ interface SortField {
 
 interface Props {
     onSelectSortField: (field: string) => void;
-    selectedSortField: string;
+    selectedSortField: string | null;
 }
 
 export default function SortSelector({ onSelectSortField, selectedSortField }: Props) {
@@ -39,10 +39,12 @@ export default function SortSelector({ onSelectSortField, selectedSortField }: P
         },
     ];
 
+    const defaultLabel = sortFields.find((f) => f.value == selectedSortField)?.label;
+
     return (
         <Menu>
             <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-                Order by : {sortFields.find((f) => f.value == selectedSortField)?.label}
+                Order by : {defaultLabel ?? "Relevance"}
             </MenuButton>
             <MenuList>
                 {sortFields.map((field, index) => (

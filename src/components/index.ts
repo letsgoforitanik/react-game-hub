@@ -10,6 +10,7 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GenreList from "./GenreList";
 import PlatformSelector from "./PlatformSelector";
 import SortSelector from "./SortSelector";
+import SearchInput from "./SearchInput";
 
 export {
     App,
@@ -24,4 +25,5 @@ export {
     GenreList,
     PlatformSelector,
     SortSelector,
+    SearchInput,
 };

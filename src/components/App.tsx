@@ -7,11 +7,12 @@ import { Platform } from "../hooks/useGames";
 export interface GameQuery {
     platform: Platform | null;
     genre: Genre | null;
-    sortField: string;
+    sortField: string | null;
+    searchText: string | null;
 }
 
 export default function App() {
-    const initQuery = { genre: null, platform: null, sortField: "" };
+    const initQuery = { genre: null, platform: null, sortField: null, searchText: null };
     const [gameQuery, setGameQuery] = useState<GameQuery>(initQuery);
 
     const templateAreas = {
@@ -27,7 +28,7 @@ export default function App() {
     return (
         <Grid templateAreas={templateAreas} templateColumns={templateColumns}>
             <GridItem area="nav">
-                <Navbar />
+                <Navbar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
             </GridItem>
             <Show above="lg">
                 <GridItem area="aside" paddingX={5}>
