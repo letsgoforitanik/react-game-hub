@@ -1,5 +1,5 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
-import { CriticScore, PlatformIconList } from ".";
+import { CriticScore, Emoji, PlatformIconList } from ".";
 import { Game } from "../hooks/useGames";
 import { getCroppedImageUrl } from "../services/image-url";
 import NoImage from "../assets/no-image.jpg";
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function GameCard({ game }: Props) {
-    const { background_image, name, parent_platforms, metacritic } = game;
+    const { background_image, name, parent_platforms, metacritic, rating_top } = game;
     const platforms = parent_platforms.map(({ platform }) => platform);
     const imageSrc = background_image ? getCroppedImageUrl(background_image) : NoImage;
 
@@ -21,7 +21,9 @@ export default function GameCard({ game }: Props) {
                     <PlatformIconList platforms={platforms} />
                     <CriticScore score={metacritic} />
                 </HStack>
-                <Heading fontSize="2xl">{name}</Heading>
+                <Heading fontSize="2xl">
+                    {name} <Emoji rating={rating_top} />
+                </Heading>
             </CardBody>
         </Card>
     );
