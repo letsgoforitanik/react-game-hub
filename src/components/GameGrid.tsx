@@ -9,7 +9,7 @@ interface Props {
 
 export default function GameGrid({ gameQuery }: Props) {
     const { games, error, loading } = useGames(gameQuery);
-    const skeletons = new Array(15).fill(0);
+    const skeletons = new Array(16).fill(0);
 
     if (error) return <Text>{error}</Text>;
 
