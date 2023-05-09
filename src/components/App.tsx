@@ -39,6 +39,7 @@ export default function App() {
                 </GridItem>
             </Show>
             <GridItem area="main">
+                <h6>Anik</h6>
                 <GameHeading gameQuery={gameQuery} />
                 <Flex paddingLeft={7} gap={5}>
                     <PlatformSelector
