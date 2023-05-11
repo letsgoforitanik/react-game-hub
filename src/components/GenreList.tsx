@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
-    const { genres, error, loading } = useGenres();
+    const { data: genres, error, isLoading } = useGenres();
     const skeletons = new Array(20).fill(0);
 
     if (error) return null;
@@ -20,13 +20,13 @@ export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
                 Genres
             </Heading>
             <List>
-                {loading &&
+                {isLoading &&
                     skeletons.map((_, index) => (
                         <ListItem key={index} paddingY="8px">
                             <Skeleton height="32px" width="100%" borderRadius={8} />
                         </ListItem>
                     ))}
-                {!loading &&
+                {!isLoading &&
                     genres.map((genre) => (
                         <ListItem key={genre.id} paddingY="8px">
                             <HStack>
