@@ -2,6 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { GameQuery } from "../components/App";
 import ApiClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
+
 export interface Game {
     id: number;
     name: string;
@@ -12,22 +13,15 @@ export interface Game {
 }
 
 export default function useGames(gameQuery: GameQuery) {
-    const { genre, platform, sortField, searchText } = gameQuery;
-
-    const key = {
-        genreId: genre?.id ?? null,
-        platformId: platform?.id ?? null,
-        sortBy: sortField,
-        searchText,
-    };
+    const { genreId, platformId, searchText, sortBy } = gameQuery;
 
     return useInfiniteQuery<FetchResponse<Game>, Error>({
-        queryKey: ["games", key],
+        queryKey: ["games", gameQuery],
         queryFn: async function ({ pageParam = 1 }) {
             const params = {
-                genre: genre?.id,
-                parent_platform: platform?.id,
-                ordering: sortField,
+                genre: genreId,
+                parent_platform: platformId,
+                ordering: sortBy,
                 search: searchText,
                 page: pageParam,
             };

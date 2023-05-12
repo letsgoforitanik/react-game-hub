@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import { GameGrid, GameHeading, GenreList, Navbar, PlatformSelector, SortSelector } from ".";
-import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/usePlatforms";
 
 export interface GameQuery {
-    platform: Platform | null;
-    genre: Genre | null;
-    sortField: string | null;
+    platformId: number | null;
+    genreId: number | null;
+    sortBy: string | null;
     searchText: string | null;
 }
 
 export default function App() {
-    const initQuery = { genre: null, platform: null, sortField: null, searchText: null };
+    const initQuery: GameQuery = {
+        platformId: null,
+        genreId: null,
+        sortBy: null,
+        searchText: null,
+    };
+
     const [gameQuery, setGameQuery] = useState<GameQuery>(initQuery);
 
     const templateAreas = {
@@ -33,8 +37,8 @@ export default function App() {
             <Show above="lg">
                 <GridItem area="aside" paddingX={5}>
                     <GenreList
-                        onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-                        selectedGenre={gameQuery.genre}
+                        onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
+                        selectedGenreId={gameQuery.genreId}
                     />
                 </GridItem>
             </Show>
@@ -42,12 +46,12 @@ export default function App() {
                 <GameHeading gameQuery={gameQuery} />
                 <Flex paddingLeft={7} gap={5}>
                     <PlatformSelector
-                        onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
-                        selectedPlatform={gameQuery.platform}
+                        onSelectPlatform={(p) => setGameQuery({ ...gameQuery, platformId: p.id })}
+                        selectedPlatformId={gameQuery.platformId}
                     />
                     <SortSelector
-                        onSelectSortField={(sortField) => setGameQuery({ ...gameQuery, sortField })}
-                        selectedSortField={gameQuery.sortField}
+                        onSelectSortField={(sortBy) => setGameQuery({ ...gameQuery, sortBy })}
+                        selectedSortField={gameQuery.sortBy}
                     />
                 </Flex>
                 <GameGrid gameQuery={gameQuery} />

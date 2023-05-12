@@ -1,6 +1,6 @@
 import { Fragment } from "react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { GameCard, GameCardSkeleton } from ".";
 import useGames from "../hooks/useGames";
 import { GameQuery } from "./App";
