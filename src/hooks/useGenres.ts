@@ -14,7 +14,8 @@ export default function useGenres() {
         queryKey: ["genres"],
         queryFn: async function () {
             const genreClient = new ApiClient<Genre>("/genres");
-            return await genreClient.getAll();
+            const response = await genreClient.getAll();
+            return response.results;
         },
         staleTime: Infinity,
     });

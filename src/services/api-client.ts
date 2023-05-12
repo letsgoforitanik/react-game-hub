@@ -28,7 +28,7 @@ class ApiClient<TData> {
             this.endpoint,
             params ? { params } : {}
         );
-        return response.data.results;
+        return response.data;
     }
 }
 

@@ -12,7 +12,8 @@ export default function usePlatforms() {
         queryKey: ["platforms"],
         queryFn: async function () {
             const platformClient = new ApiClient<Platform>("/platforms/lists/parents");
-            return await platformClient.getAll();
+            const response = await platformClient.getAll();
+            return response.results;
         },
         staleTime: Infinity,
     });
