@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import { GameGrid, GameHeading, GenreList, Navbar, PlatformSelector, SortSelector } from ".";
 import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/useGames";
+import { Platform } from "../hooks/usePlatforms";
 
 export interface GameQuery {
     platform: Platform | null;

@@ -8,15 +8,15 @@ interface Props {
 }
 
 export default function GameGrid({ gameQuery }: Props) {
-    const { games, error, loading } = useGames(gameQuery);
+    const { data: games, error, isLoading } = useGames(gameQuery);
     const skeletons = new Array(16).fill(0);
 
-    if (error) return <Text>{error}</Text>;
+    if (error) return <Text>{error.message}</Text>;
 
     return (
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={10} padding={8}>
-            {loading && skeletons.map((_, index) => <GameCardSkeleton key={index} />)}
-            {!loading && games.map((game) => <GameCard key={game.id} game={game} />)}
+            {isLoading && skeletons.map((_, index) => <GameCardSkeleton key={index} />)}
+            {!isLoading && games.map((game) => <GameCard key={game.id} game={game} />)}
         </SimpleGrid>
     );
 }
