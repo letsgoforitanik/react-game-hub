@@ -1,7 +1,16 @@
-import useData from "./useData";
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "../services/api-client";
+import { FetchResponse } from "./useData";
 import { Platform } from "./useGames";
 
 export default function usePlatforms() {
-    const { data: platforms, error, loading } = useData<Platform>("/platforms/lists/parents");
-    return { platforms, error, loading };
+    return useQuery<Platform[], Error>({
+        queryKey: ["platforms"],
+        queryFn: async function () {
+            const url = "/platforms/lists/parents";
+            const response = await apiClient.get<FetchResponse<Platform>>(url);
+            return response.data.results;
+        },
+        staleTime: Infinity,
+    });
 }

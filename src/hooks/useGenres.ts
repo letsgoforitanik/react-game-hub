@@ -15,7 +15,6 @@ export default function useGenres() {
         queryKey: ["genres"],
         queryFn: async function () {
             const response = await apiClient.get<FetchResponse<Genre>>("/genres");
-            console.log("genres", response.data);
             return response.data.results;
         },
         staleTime: Infinity,

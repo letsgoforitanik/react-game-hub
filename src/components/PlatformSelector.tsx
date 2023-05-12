@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
-    const { platforms, error } = usePlatforms();
+    const { data: platforms, error } = usePlatforms();
 
     if (error) return null;
 
@@ -19,7 +19,7 @@ export default function PlatformSelector({ onSelectPlatform, selectedPlatform }:
                 {selectedPlatform?.name ?? "Platforms"}
             </MenuButton>
             <MenuList>
-                {platforms.map((platform) => (
+                {platforms?.map((platform) => (
                     <MenuItem key={platform.id} onClick={() => onSelectPlatform(platform)}>
                         {platform.name}
                     </MenuItem>
