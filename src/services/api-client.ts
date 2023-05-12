@@ -14,6 +14,22 @@ const config = {
     },
 };
 
-const apiClient = axios.create(config);
+const axiosInstance = axios.create(config);
 
-export default apiClient;
+class ApiClient<TData> {
+    private endpoint: string;
+
+    constructor(endpoint: string) {
+        this.endpoint = endpoint;
+    }
+
+    public async getAll(params?: object) {
+        const response = await axiosInstance.get<FetchResponse<TData>>(
+            this.endpoint,
+            params ? { params } : {}
+        );
+        return response.data.results;
+    }
+}
+
+export default ApiClient;

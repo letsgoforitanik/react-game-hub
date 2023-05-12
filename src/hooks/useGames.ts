@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../components/App";
 import apiClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
+import ApiClient from "../services/api-client";
 export interface Game {
     id: number;
     name: string;
@@ -31,8 +32,8 @@ export default function useGames(gameQuery: GameQuery) {
                 search: searchText,
             };
 
-            const response = await apiClient.get<FetchResponse<Game>>("/games", { params });
-            return response.data.results;
+            const gamesClient = new ApiClient<Game>("/games");
+            return await gamesClient.getAll(params);
         },
     });
 }
