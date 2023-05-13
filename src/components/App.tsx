@@ -9,7 +9,7 @@ export default function App() {
             <Navbar />
             <Routes>
                 <Route index element={<Home />} />
-                <Route path="/games/:id" element={<GameDetail />} />
+                <Route path="/games/:slug" element={<GameDetail />} />
                 <Route path="/not-found" element={<NotFound />} />
                 <Route path="*" element={<Navigate to="/not-found" />} />
             </Routes>

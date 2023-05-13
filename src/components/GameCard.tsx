@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import { CriticScore, Emoji, PlatformIconList } from ".";
 import { Game } from "../hooks/useGames";
@@ -9,12 +10,17 @@ interface Props {
 }
 
 export default function GameCard({ game }: Props) {
-    const { background_image, name, parent_platforms, metacritic, rating_top } = game;
+    const { background_image, name, parent_platforms, metacritic, rating_top, slug } = game;
     const platforms = parent_platforms.map(({ platform }) => platform);
     const imageSrc = background_image ? getCroppedImageUrl(background_image) : NoImage;
 
+    const hover = {
+        transform: "scale(1.07)",
+        transition: "transform 0.15s ease-in",
+    };
+
     return (
-        <Card borderRadius={10} overflow={"hidden"}>
+        <Card borderRadius={10} overflow={"hidden"} _hover={hover}>
             <Image src={imageSrc} alt="game-icon" />
             <CardBody>
                 <HStack justifyContent="space-between" marginBottom={3}>
@@ -22,7 +28,8 @@ export default function GameCard({ game }: Props) {
                     <CriticScore score={metacritic} />
                 </HStack>
                 <Heading fontSize="2xl">
-                    {name} <Emoji rating={rating_top} />
+                    <Link to={`/games/${slug}`}>{name}</Link>
+                    <Emoji rating={rating_top} />
                 </Heading>
             </CardBody>
         </Card>
