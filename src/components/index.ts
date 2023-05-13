@@ -13,6 +13,7 @@ import SortSelector from "./SortSelector";
 import SearchInput from "./SearchInput";
 import GameHeading from "./GameHeading";
 import Emoji from "./Emoji";
+import ExpandableText from "./ExpandableText";
 
 export {
     App,
@@ -30,4 +31,5 @@ export {
     SearchInput,
     GameHeading,
     Emoji,
+    ExpandableText,
 };
