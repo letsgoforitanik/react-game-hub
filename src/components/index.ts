@@ -16,6 +16,7 @@ import Emoji from "./Emoji";
 import ExpandableText from "./ExpandableText";
 import DefinitionItem from "./DefinitionItem";
 import GameAttributes from "./GameAttributes";
+import GameTrailer from "./GameTrailer";
 
 export {
     App,
@@ -36,4 +37,5 @@ export {
     ExpandableText,
     DefinitionItem,
     GameAttributes,
+    GameTrailer,
 };
