@@ -14,13 +14,13 @@ export default function GameCard({ game }: Props) {
     const platforms = parent_platforms.map(({ platform }) => platform);
     const imageSrc = background_image ? getCroppedImageUrl(background_image) : NoImage;
 
-    const hover = {
+    const hoverStyle = {
         transform: "scale(1.07)",
         transition: "transform 0.15s ease-in",
     };
 
     return (
-        <Card borderRadius={10} overflow={"hidden"} _hover={hover}>
+        <Card borderRadius={10} overflow={"hidden"} _hover={hoverStyle}>
             <Image src={imageSrc} alt="game-icon" />
             <CardBody>
                 <HStack justifyContent="space-between" marginBottom={3}>

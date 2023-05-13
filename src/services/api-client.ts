@@ -30,6 +30,10 @@ class ApiClient<TData> {
         );
         return response.data;
     }
+
+    public async get(params?: object) {
+        return await axiosInstance.get<TData>(this.endpoint, params ? { params } : {});
+    }
 }
 
 export default ApiClient;
