@@ -1,4 +1,5 @@
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
@@ -14,7 +15,9 @@ export default function AppWrapper() {
             <ChakraProvider theme={theme}>
                 <ColorModeScript initialColorMode={theme.config.initialColorMode} />
                 <QueryClientProvider client={queryClient}>
-                    <App />
+                    <Router>
+                        <App />
+                    </Router>
                     <ReactQueryDevtools />
                 </QueryClientProvider>
             </ChakraProvider>
