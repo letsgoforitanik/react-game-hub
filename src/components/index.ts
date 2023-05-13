@@ -17,6 +17,7 @@ import ExpandableText from "./ExpandableText";
 import DefinitionItem from "./DefinitionItem";
 import GameAttributes from "./GameAttributes";
 import GameTrailer from "./GameTrailer";
+import GameScreenshots from "./GameScreenshots";
 
 export {
     App,
@@ -38,4 +39,5 @@ export {
     DefinitionItem,
     GameAttributes,
     GameTrailer,
+    GameScreenshots,
 };
