@@ -1,4 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { gameQueryReducer } from "./slice";
+import { GameQuery, gameQueryReducer } from "./slice";
+
+export interface State {
+    gameQuery: GameQuery;
+}
 
 export const store = configureStore({ reducer: { gameQuery: gameQueryReducer } });

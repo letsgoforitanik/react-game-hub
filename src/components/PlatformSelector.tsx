@@ -1,20 +1,19 @@
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
-import { Platform } from "../hooks/usePlatforms";
 import usePlatform from "../hooks/usePlatform";
+import { State } from "../store";
+import { setPlatformId } from "../store/slice";
 
-interface Props {
-    onSelectPlatform: (platform: Platform) => void;
-    selectedPlatformId: number | null;
-}
-
-export default function PlatformSelector({ onSelectPlatform, selectedPlatformId }: Props) {
+export default function PlatformSelector() {
+    const gameQuery = useSelector((state: State) => state.gameQuery);
     const { data: platforms, error } = usePlatforms();
+    const dispatch = useDispatch();
 
     if (error) return null;
 
-    const selectedPlatform = usePlatform(selectedPlatformId);
+    const selectedPlatform = usePlatform(gameQuery.platformId);
 
     return (
         <Menu>
@@ -23,7 +22,10 @@ export default function PlatformSelector({ onSelectPlatform, selectedPlatformId 
             </MenuButton>
             <MenuList>
                 {platforms?.map((platform) => (
-                    <MenuItem key={platform.id} onClick={() => onSelectPlatform(platform)}>
+                    <MenuItem
+                        key={platform.id}
+                        onClick={() => dispatch(setPlatformId(platform.id))}
+                    >
                         {platform.name}
                     </MenuItem>
                 ))}

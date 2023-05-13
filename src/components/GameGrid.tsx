@@ -1,15 +1,13 @@
 import { Fragment } from "react";
+import { useSelector } from "react-redux";
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { GameCard, GameCardSkeleton } from ".";
 import useGames from "../hooks/useGames";
-import { GameQuery } from "./App";
+import { State } from "../store";
 
-interface Props {
-    gameQuery: GameQuery;
-}
-
-export default function GameGrid({ gameQuery }: Props) {
+export default function GameGrid() {
+    const gameQuery = useSelector((state: State) => state.gameQuery);
     const exports = useGames(gameQuery);
 
     const { data, error, isLoading } = exports;

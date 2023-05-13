@@ -1,13 +1,12 @@
+import { useSelector } from "react-redux";
 import { Heading } from "@chakra-ui/react";
-import { GameQuery } from "./App";
 import usePlatform from "../hooks/usePlatform";
 import useGenre from "../hooks/useGenre";
+import { State } from "../store";
 
-interface Props {
-    gameQuery: GameQuery;
-}
+export default function GameHeading() {
+    const gameQuery = useSelector((state: State) => state.gameQuery);
 
-export default function GameHeading({ gameQuery }: Props) {
     const platform = usePlatform(gameQuery.platformId);
     const genre = useGenre(gameQuery.genreId);
 

@@ -1,16 +1,16 @@
 import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, HStack, Heading, Image, List, ListItem, Skeleton } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/image-url";
+import { State } from "../store";
+import { setGenreId } from "../store/slice";
 
-interface Props {
-    onSelectGenre: (genre: Genre) => void;
-    selectedGenreId: number | null;
-}
-
-export default function GenreList({ onSelectGenre, selectedGenreId }: Props) {
+export default function GenreList() {
+    const gameQuery = useSelector((state: State) => state.gameQuery);
     const { data: genres, error, isLoading } = useGenres();
     const skeletons = new Array(20).fill(0);
+    const dispatch = useDispatch();
 
     if (error) return null;
 
@@ -39,8 +39,8 @@ export default function GenreList({ onSelectGenre, selectedGenreId }: Props) {
                                 <Button
                                     fontSize="lg"
                                     variant="link"
-                                    onClick={() => onSelectGenre(genre)}
-                                    fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+                                    onClick={() => dispatch(setGenreId(genre.id))}
+                                    fontWeight={genre.id === gameQuery.genreId ? "bold" : "normal"}
                                     whiteSpace="normal"
                                     textAlign="left"
                                 >

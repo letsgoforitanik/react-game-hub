@@ -1,18 +1,17 @@
 import { FormEvent, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
+import { setSearchText } from "../store/slice";
 
-interface Props {
-    onSearch: (searchText: string | null) => void;
-}
-
-export default function SearchInput({ onSearch }: Props) {
+export default function SearchInput() {
     const inputRef = useRef<HTMLInputElement>(null);
+    const dispatch = useDispatch();
 
     function onFormSubmit(event: FormEvent) {
         event.preventDefault();
         const searchText = inputRef.current?.value;
-        onSearch(searchText ?? null);
+        searchText && dispatch(setSearchText(searchText));
     }
 
     return (
