@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Navbar } from ".";
 import { GameDetail, Home, NotFound } from "../pages";
+import { Navbar } from ".";
 
 export default function App() {
     return (

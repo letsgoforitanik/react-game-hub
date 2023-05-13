@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { Heading } from "@chakra-ui/react";
+import { State } from "../store";
 import usePlatform from "../hooks/usePlatform";
 import useGenre from "../hooks/useGenre";
-import { State } from "../store";
 
 export default function GameHeading() {
     const gameQuery = useSelector((state: State) => state.gameQuery);

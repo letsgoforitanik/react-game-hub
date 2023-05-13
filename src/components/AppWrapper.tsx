@@ -3,9 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { store } from "../store";
 import { App } from ".";
 import theme from "../theme";
-import { store } from "../store";
 
 export default function AppWrapper() {
     const queryClient = new QueryClient();

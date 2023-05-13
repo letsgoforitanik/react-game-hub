@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, HStack, Heading, Image, List, ListItem, Skeleton } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
 import { getCroppedImageUrl } from "../services/image-url";
 import { State } from "../store";
 import { setGenreId } from "../store/slice";
+import useGenres from "../hooks/useGenres";
 
 export default function GenreList() {
     const gameQuery = useSelector((state: State) => state.gameQuery);

@@ -1,11 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api-client";
-
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
+import { Platform } from "../entities";
 
 export default function usePlatforms() {
     return useQuery<Platform[], Error>({

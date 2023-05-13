@@ -1,13 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api-client";
-
-export interface Genre {
-    id: number;
-    name: string;
-    slug: string;
-    games_count: number;
-    image_background: string;
-}
+import { Genre } from "../entities";
 
 export default function useGenres() {
     return useQuery<Genre[], Error>({

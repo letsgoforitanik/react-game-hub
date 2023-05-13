@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities";
 import ApiClient from "../services/api-client";
 
 export function useGame(slug: string) {
