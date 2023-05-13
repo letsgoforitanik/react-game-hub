@@ -14,6 +14,8 @@ import SearchInput from "./SearchInput";
 import GameHeading from "./GameHeading";
 import Emoji from "./Emoji";
 import ExpandableText from "./ExpandableText";
+import DefinitionItem from "./DefinitionItem";
+import GameAttributes from "./GameAttributes";
 
 export {
     App,
@@ -32,4 +34,6 @@ export {
     GameHeading,
     Emoji,
     ExpandableText,
+    DefinitionItem,
+    GameAttributes,
 };

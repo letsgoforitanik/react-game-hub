@@ -11,11 +11,11 @@ export default function ExpandableText({ children, limit }: Props) {
 
     if (children.length <= limit) return <Text>{children}</Text>;
 
-    const summary = children.substring(0, limit);
+    const summary = children.substring(0, limit) + "...";
 
     return (
         <Text>
-            {showMore ? children : summary + "..."}
+            {showMore ? children : summary}
             <Button
                 size="xs"
                 fontWeight="bold"

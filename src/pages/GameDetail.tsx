@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGame } from "../hooks/useGame";
 import { Box, Flex, Heading, Spinner, Text } from "@chakra-ui/react";
-import { ExpandableText } from "../components";
+import { ExpandableText, GameAttributes } from "../components";
 
 export default function GameDetail() {
     const { slug } = useParams();
@@ -28,6 +28,7 @@ export default function GameDetail() {
         <Box padding={5}>
             <Heading>{name}</Heading>
             <ExpandableText limit={300}>{description_raw}</ExpandableText>
+            <GameAttributes game={game} />
         </Box>
     );
 }
