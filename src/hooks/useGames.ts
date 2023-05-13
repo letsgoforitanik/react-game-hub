@@ -13,16 +13,14 @@ export interface Game {
 }
 
 export default function useGames(gameQuery: GameQuery) {
-    const { genreId, platformId, searchText, sortBy } = gameQuery;
-
     return useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ["games", gameQuery],
         queryFn: async function ({ pageParam = 1 }) {
             const params = {
-                genre: genreId,
-                parent_platform: platformId,
-                ordering: sortBy,
-                search: searchText,
+                genre: gameQuery.genreId,
+                parent_platform: gameQuery.platformId,
+                ordering: gameQuery.sortBy,
+                search: gameQuery.searchText,
                 page: pageParam,
             };
 
@@ -34,6 +32,6 @@ export default function useGames(gameQuery: GameQuery) {
             if (lastResponse.next === null) return;
             return allResponses.length + 1;
         },
-        staleTime: 1 * 60 * 1000,
+        staleTime: 1 * 60 * 1000, // 1 min
     });
 }
