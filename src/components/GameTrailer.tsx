@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import { useGameTrailers } from "../hooks/useGameTrailers";
 
 interface Props {
@@ -8,7 +8,13 @@ interface Props {
 export default function GameTrailer({ gameId }: Props) {
     const { data: trailers, error, isLoading } = useGameTrailers(gameId);
 
-    if (isLoading) return <Spinner />;
+    if (isLoading) {
+        return (
+            <Flex width="100%" height="200px" justifyContent="center" alignItems="center">
+                <Spinner />
+            </Flex>
+        );
+    }
 
     if (error) return <p>{error.message}</p>;
 
