@@ -1,5 +1,6 @@
 import { FormEvent, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 import { setSearchText } from "../store/slice";
@@ -7,11 +8,12 @@ import { setSearchText } from "../store/slice";
 export default function SearchInput() {
     const inputRef = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function onFormSubmit(event: FormEvent) {
         event.preventDefault();
         const searchText = inputRef.current?.value;
-        searchText && dispatch(setSearchText(searchText));
+        searchText && dispatch(setSearchText(searchText)) && navigate("/");
     }
 
     return (
